@@ -1,35 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>弱电箱神器 —— Ubiquiti EdgeRouter ER-X 路由器综合使用体验 (并将其刷成 OpenWrt)</title>
-    <url>/ubiquiti-erx-sharing/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>由于本人有要做远程办公的打算，需要依赖 IPV6 从外网访问自己的电脑和其他设备，而原先的路由器没有提供 IPV6 防火墙的开关，并且也不支持 SSH 连接，拥有一台功能强大，并且高度自定义化的路由器便成为了刚需。</p>
-<p>在朋友的介绍下，看上了一台曾经被称为是“弱电箱神器”的路由器，是来自 Ubiquiti 家的 ER-X，全千兆口的有线路由器。虽然已经是有点年代的东西了，但体积小巧，功耗发热也控制的很不错，千兆网口带我寝室的 500M 宽带更是绰绰有余了，于是在海鲜市场上花费不到 200R 入手。</p>
-<p>到手后，第一时间就是先熟悉配置界面，自带的系统是 EdgeOS ，我这台被卖家升级到了最新的 Ver.2.09 ，内置了各种扩展组件，功能是十分强大，但全英文的树状式配置界面确实有点让人一时间难以上手。在什么值得买上跟着教程勉强配置好了基础的上网功能，之后各种问题就接二连三的出现个不停了……</p>
-<hr>
-<h1 id="EdgeOS-下面临的问题与解决方案"><a href="#EdgeOS-下面临的问题与解决方案" class="headerlink" title="EdgeOS 下面临的问题与解决方案"></a>EdgeOS 下面临的问题与解决方案</h1><h2 id="配置-IPV6-连接"><a href="#配置-IPV6-连接" class="headerlink" title="配置 IPV6 连接"></a>配置 IPV6 连接</h2><h3 id="已解决"><a href="#已解决" class="headerlink" title="已解决"></a>已解决</h3><p>路由器能拿到 IPV6 地址，而局域网下其他设备都拿不到的问题</p>
-<ul>
-<li>CSDN 上有不少 ER-X 的 IPV6 配置教程，跟着走了一遍以后发现路由器拿到了 IPV6 地址，而路由器下的设备都没办法拿到，经过一步步的试错最后才发现，几个教程中给的 <code>prefix length</code> 参数不是 <code>/64</code> ，<code>/60</code> 就是 <code>/56</code> ，然而我们学校的网络要把它改成 <code>/62</code> 后才能正常给局域网下的所有设备都下发 IPV6 地址，说起来也挺搞笑的。</li>
-</ul>
-<h3 id="未解决"><a href="#未解决" class="headerlink" title="未解决"></a>未解决</h3><p><strong>安卓设备和电脑的 IPV6 地址有时会丢失，重连后也不一定能重新拿到的问题</strong>·- 起初，在配置完 IPV6 后，安卓设备无法拿到 IPV6 地址，而其他的设备都正常。参照 CSDN 上的几篇文献，似乎安卓设备默认只支持无状态的 IPV6 连接，而不支持有状态，在启用 RA (Router Advertisement) 后，将 <code>managed-flag</code> 参数设置为 <code>false</code> ，<code>other-config-flag</code> 参数设置为 <code>true</code> 的情况下，路由器才会自动启用 DHCPv6 无状态自动配置功能，教程中给出的两个参数均为 <code>false</code> 。</p>
-<ul>
-<li>在更改了参数后，安卓设备能够正常的获取到 IPV6 地址了，但是在经过一段时间后出现了 IPV6 地址丢失的情况，具体表现为在 Wi-Fi 管理界面能够看到该网络分配到的 IPV6 地址，但设备无法使用，在这种情况下，一部分 IPV6 优先访问的网络内容将会出现异常，QQ，微信之类的聊天图片加载速度变得非常慢，一部分网站的访问速度也变得很慢，而经过测试，IPV6 丢失基本上都出现在断开 Wi-Fi 重连后，这意味着，只要走出寝室，断开了 Wi-Fi ，再回到寝室重连，网络就变得异常了，这确实对我造成了很严重的困扰。并且通过重新开关设备的 Wi-Fi 或者重启设备都无法得到解决，只有重启路由器，才能暂时解决这个问题，但我有没有办法不带着手机出门……</li>
-<li>在查阅了很多文献后，也没有发现和我出现一样问题的人，就跟上文的 <code>/62</code> 一样，或许是我们学校的网络环境比较特殊导致的吧。带着问题咨询了同样使用 ER-X 的朋友后，他那边也没有出现过这种问题。</li>
-</ul>
-<hr>
-<p>考虑到安卓手机并不是我的常用设备，且一部分场景下使用手机流量也未尝不可，于是便妥协用了一个多学期。后面在查阅资料的时候偶然发现这台路由器是可以刷成 OpenWrt 的，在 OpenWrt 下，一部分功能的配置就变得简单易懂了，并且拥有强大的扩展性，还能够激活设备的硬件 NAT ，提高流量转发效率。更者，可以安装魔法工具来提升上网体验。</p>
-]]></content>
-      <categories>
-        <category>技术研究与分享</category>
-      </categories>
-      <tags>
-        <tag>路由器</tag>
-        <tag>刷机</tag>
-        <tag>远程办公</tag>
-        <tag>网络安全</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>【施工中】使用 Moonlight 配合 Sunshine 推流的远程办公方案</title>
     <url>/moonlight-configurated/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>本篇文章暂时未完成，敬请期待。</p>
@@ -54,10 +25,39 @@
         <category>技术研究与分享</category>
       </categories>
       <tags>
-        <tag>远程办公</tag>
-        <tag>网络安全</tag>
         <tag>Moonlight</tag>
         <tag>Sunshine</tag>
+        <tag>远程办公</tag>
+        <tag>网络安全</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>弱电箱神器 —— Ubiquiti EdgeRouter ER-X 路由器综合使用体验 (并将其刷成 OpenWrt)</title>
+    <url>/ubiquiti-erx-sharing/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>由于本人有要做远程办公的打算，需要依赖 IPV6 从外网访问自己的电脑和其他设备，而原先的路由器没有提供 IPV6 防火墙的开关，并且也不支持 SSH 连接，拥有一台功能强大，并且高度自定义化的路由器便成为了刚需。</p>
+<p>在朋友的介绍下，看上了一台曾经被称为是“弱电箱神器”的路由器，是来自 Ubiquiti 家的 ER-X，全千兆口的有线路由器。虽然已经是有点年代的东西了，但体积小巧，功耗发热也控制的很不错，千兆网口带我寝室的 500M 宽带更是绰绰有余了，于是在海鲜市场上花费不到 200R 入手。</p>
+<p>到手后，第一时间就是先熟悉配置界面，自带的系统是 EdgeOS ，我这台被卖家升级到了最新的 Ver.2.09 ，内置了各种扩展组件，功能是十分强大，但全英文的树状式配置界面确实有点让人一时间难以上手。在什么值得买上跟着教程勉强配置好了基础的上网功能，之后各种问题就接二连三的出现个不停了……</p>
+<hr>
+<h1 id="EdgeOS-下面临的问题与解决方案"><a href="#EdgeOS-下面临的问题与解决方案" class="headerlink" title="EdgeOS 下面临的问题与解决方案"></a>EdgeOS 下面临的问题与解决方案</h1><h2 id="配置-IPV6-连接"><a href="#配置-IPV6-连接" class="headerlink" title="配置 IPV6 连接"></a>配置 IPV6 连接</h2><h3 id="已解决"><a href="#已解决" class="headerlink" title="已解决"></a>已解决</h3><p>路由器能拿到 IPV6 地址，而局域网下其他设备都拿不到的问题</p>
+<ul>
+<li>CSDN 上有不少 ER-X 的 IPV6 配置教程，跟着走了一遍以后发现路由器拿到了 IPV6 地址，而路由器下的设备都没办法拿到，经过一步步的试错最后才发现，几个教程中给的 <code>prefix length</code> 参数不是 <code>/64</code> ，<code>/60</code> 就是 <code>/56</code> ，然而我们学校的网络要把它改成 <code>/62</code> 后才能正常给局域网下的所有设备都下发 IPV6 地址，说起来也挺搞笑的。</li>
+</ul>
+<h3 id="未解决"><a href="#未解决" class="headerlink" title="未解决"></a>未解决</h3><p><strong>安卓设备和电脑的 IPV6 地址有时会丢失，重连后也不一定能重新拿到的问题</strong>·- 起初，在配置完 IPV6 后，安卓设备无法拿到 IPV6 地址，而其他的设备都正常。参照 CSDN 上的几篇文献，似乎安卓设备默认只支持无状态的 IPV6 连接，而不支持有状态，在启用 RA (Router Advertisement) 后，将 <code>managed-flag</code> 参数设置为 <code>false</code> ，<code>other-config-flag</code> 参数设置为 <code>true</code> 的情况下，路由器才会自动启用 DHCPv6 无状态自动配置功能，教程中给出的两个参数均为 <code>false</code> 。</p>
+<ul>
+<li>在更改了参数后，安卓设备能够正常的获取到 IPV6 地址了，但是在经过一段时间后出现了 IPV6 地址丢失的情况，具体表现为在 Wi-Fi 管理界面能够看到该网络分配到的 IPV6 地址，但设备无法使用，在这种情况下，一部分 IPV6 优先访问的网络内容将会出现异常，QQ，微信之类的聊天图片加载速度变得非常慢，一部分网站的访问速度也变得很慢，而经过测试，IPV6 丢失基本上都出现在断开 Wi-Fi 重连后，这意味着，只要走出寝室，断开了 Wi-Fi ，再回到寝室重连，网络就变得异常了，这确实对我造成了很严重的困扰。并且通过重新开关设备的 Wi-Fi 或者重启设备都无法得到解决，只有重启路由器，才能暂时解决这个问题，但我有没有办法不带着手机出门……</li>
+<li>在查阅了很多文献后，也没有发现和我出现一样问题的人，就跟上文的 <code>/62</code> 一样，或许是我们学校的网络环境比较特殊导致的吧。带着问题咨询了同样使用 ER-X 的朋友后，他那边也没有出现过这种问题。</li>
+</ul>
+<hr>
+<p>考虑到安卓手机并不是我的常用设备，且一部分场景下使用手机流量也未尝不可，于是便妥协用了一个多学期。后面在查阅资料的时候偶然发现这台路由器是可以刷成 OpenWrt 的，在 OpenWrt 下，一部分功能的配置就变得简单易懂了，并且拥有强大的扩展性，还能够激活设备的硬件 NAT ，提高流量转发效率。更者，可以安装魔法工具来提升上网体验。</p>
+]]></content>
+      <categories>
+        <category>技术研究与分享</category>
+      </categories>
+      <tags>
+        <tag>远程办公</tag>
+        <tag>网络安全</tag>
+        <tag>路由器</tag>
+        <tag>刷机</tag>
       </tags>
   </entry>
 </search>
