@@ -32,7 +32,7 @@
       </tags>
   </entry>
   <entry>
-    <title>弱电箱神器 —— Ubiquiti EdgeRouter ER-X 路由器综合使用体验 (并将其刷成 OpenWrt)</title>
+    <title>弱电箱神器 —— Ubiquiti EdgeRouter ER-X 路由器刷入 OpenWrt 过程及综合使用体验</title>
     <url>/ubiquiti-erx-sharing/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>由于本人有要做远程办公的打算，需要依赖 IPV6 从外网访问自己的电脑和其他设备，而原先的路由器没有提供 IPV6 防火墙的开关，并且也不支持 SSH 连接，拥有一台功能强大，并且高度自定义化的路由器便成为了刚需。</p>
 <p>在朋友的介绍下，看上了一台曾经被称为是“弱电箱神器”的路由器，是来自 Ubiquiti 家的 ER-X，全千兆口的有线路由器。虽然已经是有点年代的东西了，但体积小巧，功耗发热也控制的很不错，千兆网口带我寝室的 500M 宽带更是绰绰有余了，于是在海鲜市场上花费不到 200R 入手。</p>
