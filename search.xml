@@ -1,37 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>【施工中】使用 Moonlight 配合 Sunshine 推流的远程办公方案</title>
-    <url>/moonlight-configurated/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>本篇文章暂时未完成，敬请期待。</p>
-<h2 id="一、背景"><a href="#一、背景" class="headerlink" title="一、背景"></a>一、背景</h2><p>前不久的寒假，主播斥巨资购买了高性能的台式 PC，然而临近开学，怎么安排这台电脑又成了问题，带去学校的话路途遥远，考虑过不少邮寄之类的方案但最后还是放弃了，结果还是放进行李箱带上飞机硬搬去了学校。</p>
-<p>好嘛既然在学校能爽玩了，但还是要考虑下假期是否要把它带回家，经过一番深思熟虑，我决定采用目前技术比较成熟，而且效果很好的免费开源推流方案，即 Sunshine 作为服务端推流，在其他设备上使用 Moonlight作为客户端的远程方案。今天就把捣鼓的过程和其中踩的一些坑都 Share 一下，也算是记录自己的心得。</p>
-<h2 id="二、准备工作"><a href="#二、准备工作" class="headerlink" title="二、准备工作"></a>二、准备工作</h2><h3 id="1-网络层面的需求"><a href="#1-网络层面的需求" class="headerlink" title="1. 网络层面的需求"></a>1. 网络层面的需求</h3><ul>
-<li><p>公网 IP (IPV4 和 IPV6 地址均可)</p>
-<blockquote>
-<p>众所周知的原因，国内基本是拿不到 V4 协议的公网 IP 的，而推流方案是依赖于 P2P 技术的，必须打通客户端与服务端之间的直接连接，没有公网 IP 的话是没法打通互联的。幸运的是，国内的运营商在大部分地区已经支持 IPV6 了，有了 IPV6 后，公网 IP 的问题就得到了解决。</p>
-</blockquote>
-</li>
-<li><p>一台可以开放 IPV6 防火墙的路由器</p>
-<blockquote>
-<p>一般的路由器和光猫的 IPV6 防火墙基本都是默认开启，且没有开关功能，默认开启的防火墙会直接阻止来自外部的访问，</p>
-</blockquote>
-</li>
-</ul>
-<p>之后便是直接部署 Sunshine，由于是 Windows 客户端，只需要直接下载安装就可以直接使用了，并且也会直接帮你添加到开机启动项。经过简单的配置后，也是在局域网下测试通过了，并且推流效果很好，不外接网线，使用 5GHz Wi-Fi 的情况下，可以做到在 2560x1440 分辨率，170FPS 下最高 120Mbps 码率的传输，近乎无损的画质，还可以做到延迟仅有个位数，基本和原生使用没什么区别了。而在外接有线网的情况下，4K 高帧率高码率也是完全没问题的。</p>
-<p>搞定了局域网内的连接，紧接着就是将其开放到外网。</p>
-]]></content>
-      <categories>
-        <category>技术研究与分享</category>
-      </categories>
-      <tags>
-        <tag>Moonlight</tag>
-        <tag>Sunshine</tag>
-        <tag>远程办公</tag>
-        <tag>网络安全</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>弱电箱神器 —— Ubiquiti EdgeRouter ER-X 路由器刷入 OpenWrt 过程及综合使用体验</title>
     <url>/ubiquiti-erx-sharing/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>由于本人有要做远程办公的打算，需要依赖 IPV6 从外网访问自己的电脑和其他设备，而原先的路由器没有提供 IPV6 防火墙的开关，并且也不支持 SSH 连接，拥有一台功能强大，并且高度自定义化的路由器便成为了刚需。</p>
@@ -74,10 +43,41 @@
         <category>技术研究与分享</category>
       </categories>
       <tags>
-        <tag>远程办公</tag>
-        <tag>网络安全</tag>
         <tag>路由器</tag>
         <tag>刷机</tag>
+        <tag>远程办公</tag>
+        <tag>网络安全</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【施工中】使用 Moonlight 配合 Sunshine 推流的远程办公方案</title>
+    <url>/moonlight-configurated/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>本篇文章暂时未完成，敬请期待。</p>
+<h2 id="一、背景"><a href="#一、背景" class="headerlink" title="一、背景"></a>一、背景</h2><p>前不久的寒假，主播斥巨资购买了高性能的台式 PC，然而临近开学，怎么安排这台电脑又成了问题，带去学校的话路途遥远，考虑过不少邮寄之类的方案但最后还是放弃了，结果还是放进行李箱带上飞机硬搬去了学校。</p>
+<p>好嘛既然在学校能爽玩了，但还是要考虑下假期是否要把它带回家，经过一番深思熟虑，我决定采用目前技术比较成熟，而且效果很好的免费开源推流方案，即 Sunshine 作为服务端推流，在其他设备上使用 Moonlight作为客户端的远程方案。今天就把捣鼓的过程和其中踩的一些坑都 Share 一下，也算是记录自己的心得。</p>
+<h2 id="二、准备工作"><a href="#二、准备工作" class="headerlink" title="二、准备工作"></a>二、准备工作</h2><h3 id="1-网络层面的需求"><a href="#1-网络层面的需求" class="headerlink" title="1. 网络层面的需求"></a>1. 网络层面的需求</h3><ul>
+<li><p>公网 IP (IPV4 和 IPV6 地址均可)</p>
+<blockquote>
+<p>众所周知的原因，国内基本是拿不到 V4 协议的公网 IP 的，而推流方案是依赖于 P2P 技术的，必须打通客户端与服务端之间的直接连接，没有公网 IP 的话是没法打通互联的。幸运的是，国内的运营商在大部分地区已经支持 IPV6 了，有了 IPV6 后，公网 IP 的问题就得到了解决。</p>
+</blockquote>
+</li>
+<li><p>一台可以开放 IPV6 防火墙的路由器</p>
+<blockquote>
+<p>一般的路由器和光猫的 IPV6 防火墙基本都是默认开启，且没有开关功能，默认开启的防火墙会直接阻止来自外部的访问，</p>
+</blockquote>
+</li>
+</ul>
+<p>之后便是直接部署 Sunshine，由于是 Windows 客户端，只需要直接下载安装就可以直接使用了，并且也会直接帮你添加到开机启动项。经过简单的配置后，也是在局域网下测试通过了，并且推流效果很好，不外接网线，使用 5GHz Wi-Fi 的情况下，可以做到在 2560x1440 分辨率，170FPS 下最高 120Mbps 码率的传输，近乎无损的画质，还可以做到延迟仅有个位数，基本和原生使用没什么区别了。而在外接有线网的情况下，4K 高帧率高码率也是完全没问题的。</p>
+<p>搞定了局域网内的连接，紧接着就是将其开放到外网。</p>
+]]></content>
+      <categories>
+        <category>技术研究与分享</category>
+      </categories>
+      <tags>
+        <tag>远程办公</tag>
+        <tag>网络安全</tag>
+        <tag>Moonlight</tag>
+        <tag>Sunshine</tag>
       </tags>
   </entry>
 </search>

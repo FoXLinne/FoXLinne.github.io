@@ -3,15 +3,15 @@ const live2d_settings = {
     // 基本设置
     'modelUrl': 'live2d', // 存放模型的文件夹路径，末尾不需要斜杠
     // 模型设置
-    'modelName': 'nianoa_ver5_0101', // 默认加载的模型名称，仅在无本地记录的情况下有效
+    'modelName': 'nianoa_ver6_0101', // 默认加载的模型名称，仅在无本地记录的情况下有效
     'preLoadMotion': true, // 是否预载动作数据，只对 model3 模型有效，不预载可以提高 model3 模型的加载速度，但可能导致首次触发动作时卡顿
     'tryWebp': true, // 如果浏览器支持 WebP 格式，将优先加载 WebP 格式的贴图，例如默认贴图文件为 klee.8192/texture_00.png，
     // 启用后将优先加载 klee.8192/texture_00.png.webp，文件不存在会自动 fallback
     //看板娘样式设置
-    'live2dHeight': 380, // 看板娘高度，不需要单位  
-    'live2dWidth': 250, // 看板娘宽度，不需要单位
+    'live2dHeight': 300, // 看板娘高度，不需要单位  
+    'live2dWidth': 200, // 看板娘宽度，不需要单位
     'waifuMinWidth': '1040px', // 页面小于宽度小于指定数值时隐藏看板娘，例如 'disable'(禁用)，推荐 '1040px'
-    'waifuEdgeSide': 'right: 10', // 看板娘贴边方向，例如 'left:0'(靠左 0px)，'right:30'(靠右 30px)，可以被下面的模型设置覆盖
+    'waifuEdgeSide': 'right: 75', // 看板娘贴边方向，例如 'left:0'(靠左 0px)，'right:30'(靠右 30px)，可以被下面的模型设置覆盖
 }
 
 /****************************************************************************************************/
