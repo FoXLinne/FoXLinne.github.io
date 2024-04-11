@@ -29,6 +29,7 @@
         <tag>Sunshine</tag>
         <tag>远程办公</tag>
         <tag>网络安全</tag>
+        <tag>Windows</tag>
       </tags>
   </entry>
   <entry>
@@ -78,6 +79,49 @@
         <tag>网络安全</tag>
         <tag>路由器</tag>
         <tag>刷机</tag>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>在 Windows 上安装 zsh 并将其设置为默认 Shell</title>
+    <url>/zshonwindows/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p><code>zsh</code> 作为目前比较强大的终端，支持丰富的主题与插件，可以协助用户更加便捷的使用操作系统，而目前在 macOS 各种 Linux 发行版下安装并配置 <code>zsh</code> 比较容易，本文将教大家如何在 Windows 下安装配置 <code>zsh</code>，使用 <code>Oh My Zsh</code> 配置插件，安装主题，并将其设置为 <code>Windows Terminal</code> 与 <code>SSH</code> 连接时的默认 Shell。</p>
+</blockquote>
+<h1 id="安装-Git"><a href="#安装-Git" class="headerlink" title="安装 Git"></a>安装 <code>Git</code></h1><blockquote>
+<p><code>Git for Windows</code> 提供了一个仿真环境，可以让用户在 Windows 的命令行中执行与 Linux 相同的 <code>git</code> 命令，方便快捷。可以通过以下几种方式安装 <code>Git for Windows</code> ：</p>
+</blockquote>
+<h2 id="官网下载"><a href="#官网下载" class="headerlink" title="官网下载"></a>官网<a href="https://gitforwindows.org/">下载</a></h2><p>下载完毕后，安装时请勾选 <code>Add a Git Bash Profile to Windows Terminal</code> ，<code>Git Bash</code> 的标签页将会自动添加到 <code>Windows Terminal</code> 中，以便我们后续进行进一步的配置。</p>
+<h2 id="使用包管理器-Scoop-安装"><a href="#使用包管理器-Scoop-安装" class="headerlink" title="使用包管理器 Scoop 安装"></a>使用包管理器 <code>Scoop</code> 安装</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">scoop install git</span><br></pre></td></tr></table></figure>
+
+<p>下载完毕后，在 <code>Windows Terminal</code> 中手动添加 <code>Git Bash</code> 标签页，并<em><strong>将其设为默认</strong></em>（可选）。</p>
+<h1 id="安装-zsh"><a href="#安装-zsh" class="headerlink" title="安装 zsh"></a>安装 <code>zsh</code></h1><p>进入<a href="https://packages.msys2.org/package/zsh?repo=msys&variant=x86_64">该网站</a>后，点击 <code>File</code> 旁边的链接，即可下载。</p>
+<p>下载完成后得到如图所示的扩展名为 <code>.zst</code> 的压缩包，可以使用 <code>7-Zip</code> 等软件解压，我这里使用 <code>Bandizip</code> 解压。</p>
+<p>将解压好的文件移动到 <code>Git</code> 的根目录下，合并同名文件夹，得到的文件夹结构如图所示：</p>
+<p>此时在 <code>Windows Terminal</code> 中打开 <code>Git Bash</code> ，输入 <code>zsh</code> ，出现下图则说明安装成功。</p>
+<p>选择 <code>0</code> ，创建完毕 <code>~/.zshrc</code> 文件后成功进入 <code>zsh</code> 。</p>
+<h1 id="安装-Oh-My-Zsh"><a href="#安装-Oh-My-Zsh" class="headerlink" title="安装 Oh My Zsh"></a>安装 <code>Oh My Zsh</code></h1><blockquote>
+<p>刚安装好的 <code>zsh</code> 还不够完善，<code>Oh My Zsh</code> 是基于 <code>zsh</code> 的命令行拓展工具，提供了主题配置与插件机制，并内置一些便捷的操作，此处我们安装  <code>Oh My Zsh</code> 来改善 zsh 的使用体验。</p>
+</blockquote>
+<blockquote>
+<p>可以使用 curl 或者 wget 两种方式来安装，任选一种即可。</p>
+</blockquote>
+<h2 id="使用-curl-命令安装"><a href="#使用-curl-命令安装" class="headerlink" title="使用 curl 命令安装"></a>使用 curl 命令安装</h2><h3 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub:"></a>GitHub:</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sh -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Gitee-无需魔法"><a href="#Gitee-无需魔法" class="headerlink" title="Gitee (无需魔法):"></a>Gitee (无需魔法):</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sh -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="使用-wget-命令安装"><a href="#使用-wget-命令安装" class="headerlink" title="使用 wget 命令安装"></a>使用 wget 命令安装</h2><h3 id="GitHub-1"><a href="#GitHub-1" class="headerlink" title="GitHub"></a>GitHub</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sh -c <span class="string">&quot;<span class="subst">$(wget -O- https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh )</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Gitee-无需魔法-1"><a href="#Gitee-无需魔法-1" class="headerlink" title="Gitee (无需魔法):"></a>Gitee (无需魔法):</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sh -c <span class="string">&quot;<span class="subst">$(wget -O- https://gitee.com/pocmon/mirrors/raw/master/tools/install.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="配置-Oh-My-Zsh-主题"><a href="#配置-Oh-My-Zsh-主题" class="headerlink" title="配置 Oh My Zsh 主题"></a>配置 <code>Oh My Zsh</code> 主题</h2><p><code>Oh My Zsh</code> 主题文件在 <code>~/.oh-my-zsh/themes</code> 下，默认主题为 <code>robbyrussell</code> 。想更换主题请在 <code>~/.zshrc</code> 文件中修改 <code>ZSH_THEME</code> 字段的配置。</p>
+]]></content>
+      <categories>
+        <category>技术研究与分享</category>
+      </categories>
+      <tags>
+        <tag>Windows</tag>
+        <tag>终端</tag>
       </tags>
   </entry>
 </search>
