@@ -86,7 +86,7 @@
       </tags>
   </entry>
   <entry>
-    <title>【施工中】在 Windows 上安装 zsh 并将其设置为默认 Shell</title>
+    <title>在 Windows 上安装 zsh 并将其设置为默认 Shell</title>
     <url>/zshonwindows/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
 <p><code>zsh</code> 作为目前比较强大的终端，支持丰富的主题与插件，可以协助用户更加便捷的使用操作系统，而目前在 macOS 各种 Linux 发行版下安装并配置 <code>zsh</code> 比较容易，本文将教大家如何在 Windows 下安装配置 <code>zsh</code>，使用 <code>Oh My Zsh</code> 配置插件，安装主题，并将其设置为 <code>Windows Terminal</code> 与 <code>SSH</code> 连接时的默认 Shell。</p>
@@ -98,7 +98,7 @@
 <h2 id="使用包管理器-Scoop-安装"><a href="#使用包管理器-Scoop-安装" class="headerlink" title="使用包管理器 Scoop 安装"></a>使用包管理器 <code>Scoop</code> 安装</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">scoop install git</span><br></pre></td></tr></table></figure>
 
 <p>下载完毕后，在 <code>Windows Terminal</code> 中手动添加 <code>Git Bash</code> 标签页，并<em><strong>将其设为默认</strong></em>（可选）。</p>
-<h1 id="安装-zsh"><a href="#安装-zsh" class="headerlink" title="安装 zsh"></a>安装 <code>zsh</code></h1><p>进入<a href="https://packages.msys2.org/package/zsh?repo=msys&variant=x86_64">该网站</a>后，点击 <code>File</code> 旁边的链接，即可下载。</p>
+<h1 id="安装-zsh"><a href="#安装-zsh" class="headerlink" title="安装 zsh"></a>安装 <code>zsh</code></h1><p><a href="https://packages.msys2.org/package/zsh?repo=msys&variant=x86_64">点击访问下载地址</a>，进入后，点击 <code>File</code> 旁边的链接，即可下载。</p>
 <p>下载完成后得到如图所示的扩展名为 <code>.zst</code> 的压缩包，可以使用 <code>7-Zip</code> 等软件解压，我这里使用 <code>Bandizip</code> 解压。</p>
 <p>将解压好的文件移动到 <code>Git</code> 的根目录下，合并同名文件夹，得到的文件夹结构如图所示：</p>
 <p>此时在 <code>Windows Terminal</code> 中打开 <code>Git Bash</code> ，输入 <code>zsh</code> ，出现下图则说明安装成功。</p>
@@ -117,7 +117,32 @@
 
 <h3 id="Gitee-无需魔法-1"><a href="#Gitee-无需魔法-1" class="headerlink" title="Gitee (无需魔法):"></a>Gitee (无需魔法):</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sh -c <span class="string">&quot;<span class="subst">$(wget -O- https://gitee.com/pocmon/mirrors/raw/master/tools/install.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="配置-Oh-My-Zsh-主题"><a href="#配置-Oh-My-Zsh-主题" class="headerlink" title="配置 Oh My Zsh 主题"></a>配置 <code>Oh My Zsh</code> 主题</h2><p><code>Oh My Zsh</code> 主题文件在 <code>~/.oh-my-zsh/themes</code> 下，默认主题为 <code>robbyrussell</code> 。想更换主题请在 <code>~/.zshrc</code> 文件中修改 <code>ZSH_THEME</code> 字段的配置。</p>
+<h2 id="配置-Oh-My-Zsh-主题"><a href="#配置-Oh-My-Zsh-主题" class="headerlink" title="配置 Oh My Zsh 主题"></a>配置 <code>Oh My Zsh</code> 主题</h2><blockquote>
+<p><code>Oh My Zsh</code> 主题文件在 <code>~/.oh-my-zsh/themes</code> 下，默认主题为 <code>robbyrussell</code> 。想更换主题请在 <code>~/.zshrc</code> 文件中修改 <code>ZSH_THEME</code> 字段的配置。</p>
+</blockquote>
+<p>由于我个人比较喜欢使用 <code>powerlevel10k</code> 主题，所以这次来示范一下怎么安装这个主题。</p>
+<h3 id="使用-git-命令克隆仓库"><a href="#使用-git-命令克隆仓库" class="headerlink" title="使用 git 命令克隆仓库"></a>使用 git 命令克隆仓库</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> --depth=1 https://github.com/romkatv/powerlevel10k.git <span class="variable">$&#123;ZSH_CUSTOM:-<span class="variable">$HOME</span>/.oh-my-zsh/custom&#125;</span>/themes/powerlevel10k</span><br></pre></td></tr></table></figure>
+
+<p>克隆后，会自动打开配置向导，根据向导中的提示就可以按照自己的喜好设置主题。如果需要再次打开配置向导，在终端中输入 <code>p10 configure</code> 即可。</p>
+<blockquote>
+<p>如果出现向导中的字体显示不全的问题，可以根据向导中的提示，安装推荐的字体，并在终端中将其设置为显示字体后，再次运行向导。</p>
+</blockquote>
+<p>之后，打开 <code>.zshrc</code> 配置文件，我使用 <code>Nano</code> 来修改，你也可以使用其他软件，比如记事本或者 <code>VS Code</code>。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">nano ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+<p>修改 <code>ZSH_THEME</code> 字段为 <code>ZSH_THEME=&quot;powerlevel10k/powerlevel10k&quot;</code>。</p>
+<p>完成保存后，使用命令刷新配置文件。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+<h1 id="将-zsh-设置为默认的-Shell"><a href="#将-zsh-设置为默认的-Shell" class="headerlink" title="将 zsh 设置为默认的 Shell"></a>将 <code>zsh</code> 设置为默认的 <code>Shell</code></h1><p>要让每次打开终端时都使用 <code>zsh</code>，需要让 <code>Git Bash</code> 在启动时自动运行 <code>zsh</code>，因此，我们需要在 bash 的配置文件中增加一些内容。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">nano ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+<p>同样使用 Nano 编辑器打开 bash 的配置文件，在最后加入以下内容。</p>
+<pre><code>if[ -t 1 ]; then
+execzsh
+fi
+</code></pre>
+<p>至此，在 Windows 上安装 zsh 以及安装之后的其他配置工作都已经大功告成，接下来就可以使用 zsh 代替默认的命令行工具，提高工作效率了。</p>
 ]]></content>
       <categories>
         <category>技术研究与分享</category>
